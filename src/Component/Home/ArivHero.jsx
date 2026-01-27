@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   FaBuilding,
@@ -9,7 +9,7 @@ import {
 } from "react-icons/fa";
 
 /* =====================
-   IMPORT IMAGES
+   IMAGES
 ===================== */
 import bg1 from "../../assets/image/h1.jpg";
 import bg2 from "../../assets/image/h2.jpg";
@@ -18,7 +18,7 @@ import bg3 from "../../assets/image/h3.jpg";
 const images = [bg1, bg2, bg3];
 
 /* =====================
-   TYPING TEXT
+   TEXT
 ===================== */
 const headings = [
   "Enterprise Technology Provider",
@@ -38,43 +38,75 @@ const counters = [
 ];
 
 export default function ArivHero() {
+  const sectionRef = useRef(null);
+
   const [index, setIndex] = useState(0);
   const [textIndex, setTextIndex] = useState(0);
   const [displayText, setDisplayText] = useState("");
   const [countValues, setCountValues] = useState(counters.map(() => 0));
+  const [active, setActive] = useState(false);
 
-  /* Background slider */
+  /* =====================
+     OBSERVER (VISIBLE)
+  ===================== */
   useEffect(() => {
-    const i = setInterval(
+    const observer = new IntersectionObserver(
+      ([entry]) => setActive(entry.isIntersecting),
+      { threshold: 0.5 }
+    );
+
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  /* =====================
+     BACKGROUND SLIDER
+  ===================== */
+  useEffect(() => {
+    if (!active) return;
+    const interval = setInterval(
       () => setIndex((p) => (p + 1) % images.length),
       6000
     );
-    return () => clearInterval(i);
-  }, []);
+    return () => clearInterval(interval);
+  }, [active]);
 
-  /* Typing animation */
+  /* =====================
+     TYPING EFFECT
+  ===================== */
   useEffect(() => {
-    let c = 0;
+    if (!active) return;
+
+    let char = 0;
     setDisplayText("");
-    const t = setInterval(() => {
-      setDisplayText(headings[textIndex].slice(0, c));
-      c++;
-      if (c > headings[textIndex].length) {
-        clearInterval(t);
+
+    const typing = setInterval(() => {
+      setDisplayText(headings[textIndex].slice(0, char));
+      char++;
+      if (char > headings[textIndex].length) {
+        clearInterval(typing);
         setTimeout(
           () => setTextIndex((p) => (p + 1) % headings.length),
           1800
         );
       }
     }, 65);
-    return () => clearInterval(t);
-  }, [textIndex]);
 
-  /* Counters */
+    return () => clearInterval(typing);
+  }, [textIndex, active]);
+
+  /* =====================
+     COUNTERS
+  ===================== */
   useEffect(() => {
+    if (!active) return;
+
+    setCountValues(counters.map(() => 0));
+
     counters.forEach((counter, i) => {
       let start = 0;
-      const step = Math.ceil(counter.value / 60);
+      const step = Math.ceil(counter.value / 50);
+
       const timer = setInterval(() => {
         start += step;
         if (start >= counter.value) {
@@ -86,14 +118,16 @@ export default function ArivHero() {
           arr[i] = start;
           return arr;
         });
-      }, 30);
+      }, 40);
     });
-  }, []);
+  }, [active]);
 
   return (
-    <section className="relative min-h-screen overflow-hidden">
-
-      {/* Background */}
+    <section
+      ref={sectionRef}
+      className="relative min-h-[100vh] md:h-[92vh] overflow-hidden"
+    >
+      {/* ================= BACKGROUND ================= */}
       <AnimatePresence>
         <motion.div
           key={index}
@@ -106,66 +140,64 @@ export default function ArivHero() {
         />
       </AnimatePresence>
 
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#320609]/30 via-[#320609]/70 to-[#03303A]/90" />
+      {/* ================= OVERLAY ================= */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#320609]/40 via-[#320609]/70 to-[#03303A]/90" />
 
       {/* ================= CONTENT ================= */}
-      <div className="relative z-10 min-h-screen flex flex-col justify-center items-center px-6 text-center text-white">
+      <div className="relative z-10 min-h-[100vh] md:h-full flex flex-col justify-center items-center px-4 sm:px-6 lg:px-10 text-center text-white">
 
-        {/* Badge */}
-        <span className="mb-5 px-4 py-1 rounded-full bg-[#C9A24D] text-[#320609] font-semibold text-sm">
+        {/* BADGE */}
+        <span className="mb-4 px-4 py-1 rounded-full bg-[#C9A24D] text-[#320609] font-semibold text-xs sm:text-sm">
           ARVI • Enterprise Solutions
         </span>
 
-        {/* Heading */}
-        <h1 className="text-4xl md:text-5xl font-extrabold min-h-[70px]">
+        {/* HEADING */}
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold min-h-[48px] sm:min-h-[56px] md:min-h-[60px]">
           {displayText}
           <span className="text-[#C9A24D]">|</span>
         </h1>
 
-        {/* Paragraph */}
-        <p className="mt-4 max-w-2xl text-base md:text-lg text-white/90">
+        {/* PARAGRAPH */}
+        <p className="mt-3 max-w-xl md:max-w-2xl text-sm sm:text-base md:text-lg text-white/90">
           ARVI delivers enterprise-grade technology, digital infrastructure,
           institutional setups, printing solutions, and real estate development
           with precision, scalability, and trust.
         </p>
 
-        {/* Buttons */}
-        <div className="mt-8 flex gap-4 flex-wrap justify-center">
-          <button className="px-8 py-3 rounded-lg bg-[#03303A] hover:bg-[#02242B] transition font-semibold cursor-pointer ">
+        {/* BUTTONS */}
+        <div className="mt-7 flex flex-col sm:flex-row gap-4 justify-center">
+          <button className="px-7 py-3 rounded-lg bg-[#03303A] hover:bg-[#02242B] transition font-semibold w-full sm:w-auto">
             Explore Services
           </button>
-          <button className="px-8 py-3 rounded-lg border border-white/40 hover:bg-white hover:text-[#320609] transition font-semibold cursor-pointer">
+          <button className="px-7 py-3 rounded-lg border border-white/40 hover:bg-white hover:text-[#320609] transition font-semibold w-full sm:w-auto">
             Contact ARVI
           </button>
         </div>
 
-        {/* ================= COUNTERS PANEL ================= */}
-        <div className="mt-14 w-full max-w-6xl">
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-6 bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-8">
-
+        {/* ================= COUNTERS ================= */}
+        <div className="mt-10 sm:mt-12 w-full max-w-6xl">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-5 sm:gap-6 bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-5 sm:p-7">
             {counters.map(({ icon: Icon, label }, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.15 }}
+                animate={active ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: i * 0.12 }}
                 className="flex flex-col items-center text-center"
               >
-                <div className="w-14 h-14 flex items-center justify-center rounded-xl bg-[#03303A]/70 text-[#C9A24D] text-3xl mb-3">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center rounded-xl bg-[#03303A]/70 text-[#C9A24D] text-2xl sm:text-3xl mb-2 sm:mb-3">
                   <Icon />
                 </div>
 
-                <h3 className="text-3xl font-extrabold">
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-extrabold">
                   {countValues[i]}+
                 </h3>
 
-                <p className="text-sm text-white/80 mt-1">
+                <p className="text-xs sm:text-sm text-white/80 mt-1">
                   {label}
                 </p>
               </motion.div>
             ))}
-
           </div>
         </div>
       </div>

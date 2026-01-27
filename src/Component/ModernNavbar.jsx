@@ -33,7 +33,7 @@ const COLORS = {
 ===================== */
 const navItems = [
   { name: "Home", path: "/", icon: <FaHome /> },
-  { name: "About ARIV", path: "/about", icon: <FaInfoCircle /> },
+  { name: "About ARVI", path: "/about", icon: <FaInfoCircle /> },
   { name: "Services", path: "/services", icon: <FaLayerGroup /> },
   { name: "Projects", path: "/projects", icon: <FaBuilding /> },
   { name: "Gallery", path: "/gallery", icon: <FaImages /> },
