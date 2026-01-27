@@ -1,5 +1,0 @@
-cel {
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/" }
-  ]
-}
