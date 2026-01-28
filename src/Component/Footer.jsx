@@ -23,6 +23,7 @@ import { Link } from "react-router-dom";
 import VisitorCounter from "./VisitorCounter";
 import logo from "../assets/image/Arvi_Solution_3D_Logo_1.png";
 import bgImg from "../assets/image/Arvi_Solution_3D_Logo_1.png";
+import Translator from "./Translator";
 
 /* =====================
    ARIV BRAND COLORS
@@ -42,7 +43,7 @@ const servicesData = [
   { name: "Website Design Solutions", path: "/services/web", icon: FaImages },
   { name: "Printing Solutions", path: "/services/printing", icon: FaStore },
   { name: "School Furniture Solutions", path: "/services/furniture", icon: FaBuilding },
-  { name: "Real Estate Projects", path: "/services/real-estate", icon: FaProjectDiagram },
+  { name: "Real Estate Projects", path: "/services/10", icon: FaProjectDiagram },
 ];
 
 export default function Footer() {
@@ -74,20 +75,19 @@ export default function Footer() {
 
         {/* ABOUT ARIV */}
         <div>
-          <img src={logo} alt="ARIV Logo" className="w-40 mb-4" />
+          <img src={logo} alt="ARIV Logo" className="w-40 mb-4 rounded-full" />
           <p className="text-white/90 leading-relaxed">
             ARVI is a trusted enterprise solutions provider delivering
             technology integration, digital transformation, infrastructure,
             and turnkey business solutions across multiple industries.
           </p>
 
-          <Link
-            to="/contact"
-            className="mt-5 inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition"
-            style={{ backgroundColor: COLORS.accent, color: COLORS.secondary }}
-          >
-            <FaEnvelope /> Get in Touch
-          </Link>
+       <div className="mt-5">  <Link
+              to="https://arvisolutions.in/webmail"
+              className="bg-[#00b7ff]  hover:bg-[#5bd0ff] text-white px-6 py-3 rounded-lg text-center font-medium transition transform hover:scale-105 duration-300 min-w-[120px] "
+            >
+              ✉️ Webmail
+            </Link></div>
         </div>
 
         {/* QUICK LINKS */}
@@ -98,9 +98,9 @@ export default function Footer() {
               ["Home", "/", <FaHome />],
               ["About ARIV", "/about", <FaInfoCircle />],
               ["Services", "/services", <FaLayerGroup />],
-              ["Projects", "/projects", <FaBuilding />],
+              ["Ccertificate", "/certificate", <FaBuilding />],
               ["Contact Us", "/contact", <FaPhoneAlt />],
-              ["Terms & Conditions", "/terms", <FaFile />],
+              // ["Terms & Conditions", "/terms", <FaFile />],
             ].map(([text, link, icon], i) => (
               <li key={i}>
                 <Link
@@ -113,7 +113,15 @@ export default function Footer() {
               </li>
             ))}
           </ul>
+          <h4 className="mt-6 font-bold text-2xl text-white font-[italiana]">
+            Translator 👇
+          </h4>
+          <div className="mb-4 flex">
+            <Translator />
+            <div className="w-42 md:w-16"></div>
+          </div>
         </div>
+      
 
         {/* SERVICES */}
         <div>
@@ -154,19 +162,32 @@ export default function Footer() {
 
           <p className="py-1">
             <FaPhoneAlt className="inline mr-2 text-[#C9A24D]" />
-            +91 98978 14896
+            +91 9059117459
+          </p>
+          <p className="py-1">
+            <FaPhoneAlt className="inline mr-2 text-[#C9A24D]" />
+            +91 8886327899
           </p>
 
           <p className="py-1">
             <FaEnvelope className="inline mr-2 text-[#C9A24D]" />
-            info@arivsolutions.com
+            Arunn@arvisolutions.in
+          </p>
+          <p className="py-1">
+            <FaEnvelope className="inline mr-2 text-[#C9A24D]" />
+            Helpdesk@arvisolutions.in
           </p>
 
           <p className="text-white/90 mt-3 text-sm">
             <strong>Head Office:</strong>
             <br />
-            ARVI Solutions, Delhi NCR, India
+            Plot No. 6 Ground Floor Kalyanpuri Colony Road Opposite Sai Ambika Vihar Visatath Enclave, Azmath Nagar, Uppal, Hyderabad, Telangana 500039
           </p>
+          {/* <p className="text-white/90 mt-3 text-sm">
+            <strong>Head Office:</strong>
+            <br />
+            Plot No. 8-43/9/10 Ground Floor West Bajali Nearby Street No. 6 Sri Laxmi Narsimha Tent House Balaji Hill Colony Uppal Hyderabad Telangana 500039
+          </p> */}
         </div>
       </div>
 

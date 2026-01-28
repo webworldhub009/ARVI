@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { FaArrowRight, FaPhoneAlt } from "react-icons/fa";
 import bgImage from "../../assets/image/s1.jpg"; // change if needed
+import { Link } from "react-router-dom";
 
 export default function ServicesHero() {
   return (
@@ -59,20 +60,20 @@ export default function ServicesHero() {
           className="mt-10 flex flex-col sm:flex-row gap-4 justify-center"
         >
           <a
-            href="#services-list"
+            href="#services"
             className="inline-flex items-center justify-center gap-3 px-8 py-3 rounded-xl bg-[#C9A24D] text-[#230304] font-semibold 
                        hover:bg-white transition-all duration-300 transform hover:scale-105 shadow-lg"
           >
             Explore Services <FaArrowRight />
           </a>
 
-          <a
-            href="/contact"
+          <Link
+            to="/contact"
             className="inline-flex items-center justify-center gap-3 px-8 py-3 rounded-xl border border-white/40 text-white font-semibold 
                        hover:bg-white hover:text-[#230304] transition-all duration-300 transform hover:scale-105"
           >
             Contact ARVI <FaPhoneAlt />
-          </a>
+          </Link>
         </motion.div>
       </div>
     </section>

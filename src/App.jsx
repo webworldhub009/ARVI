@@ -12,10 +12,11 @@ import Gallery from './Pages/Gallery'
 import Contact from './Pages/Contact'
 
 import Service from './Pages/Service'
-import Projects from './Pages/Project'
+// import Projects from './Pages/Certificate'
 import FloatingContactButtons from './Component/FloatingContactButtons'
 import ScrollToTop from './Pages/ScrollToTop'
 import ServiceDetail from './Component/Services/ServiceDetail'
+import Certificate from './Pages/Certificate'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -33,7 +34,7 @@ function App() {
       <Route path="/about" element={<About />} />
       <Route path="/services" element={<Service />} />
       <Route path="/services/:id" element={<ServiceDetail />} />
-      <Route path="/projects" element={<Projects />} />
+      <Route path="/certificate" element={<Certificate />} />
       <Route path="/gallery" element={<Gallery />} />
       <Route path="/contact" element={<Contact />} />
     </Routes>

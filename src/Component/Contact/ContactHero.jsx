@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import bgImage from "../../assets/image/hcb.jpg"; // apni image ka path
+import { Link } from "react-router-dom";
 
 export default function ContactHero() {
   return (
@@ -63,7 +64,7 @@ export default function ContactHero() {
           {/* PRIMARY */}
           <button
             className="
-              px-8 py-3 rounded-xl font-semibold
+              px-8 py-3 cursor-pointer rounded-xl font-semibold
               bg-[#C9A24D] text-[#230304]
               hover:bg-[#E0B85C]
               hover:scale-105
@@ -71,20 +72,21 @@ export default function ContactHero() {
               shadow-lg shadow-[#C9A24D]/30
             "
           >
-            Get in Touch
+            <a href="#contact">Get in Touch</a>
           </button>
 
           {/* SECONDARY */}
           <button
             className="
-              px-8 py-3 rounded-xl font-semibold
+              px-8 py-3 cursor-pointer rounded-xl font-semibold
               border border-white/40 text-white
               hover:bg-white hover:text-[#230304]
               hover:scale-105
               transition-all duration-300
             "
           >
-            View Our Services
+            <Link to="/services">Explore Services</Link>
+            
           </button>
         </motion.div>
 

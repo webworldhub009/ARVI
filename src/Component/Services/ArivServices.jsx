@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { FaArrowRight } from "react-icons/fa";
 import serviceImg from "../../assets/image/s1.jpg"; 
+import { Link } from "react-router-dom";
 // 👆 apni service image yahan daal dena
 
 export default function ArivServices() {
@@ -63,7 +64,7 @@ export default function ArivServices() {
 
               {/* text */}
               <span className="relative z-10 flex items-center gap-3">
-                Learn More Services
+                <Link to="/services" className="text-[#230304]">Learn More Services</Link>
                 <FaArrowRight className="transition-transform duration-300 group-hover:translate-x-2" />
               </span>
             </a>

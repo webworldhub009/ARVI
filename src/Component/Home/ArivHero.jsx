@@ -14,6 +14,7 @@ import {
 import bg1 from "../../assets/image/h1.jpg";
 import bg2 from "../../assets/image/h2.jpg";
 import bg3 from "../../assets/image/h3.jpg";
+import { Link } from "react-router-dom";
 
 const images = [bg1, bg2, bg3];
 
@@ -158,20 +159,21 @@ export default function ArivHero() {
         </h1>
 
         {/* PARAGRAPH */}
-        <p className="mt-3 max-w-xl md:max-w-2xl text-sm sm:text-base md:text-lg text-white/90">
-          ARVI delivers enterprise-grade technology, digital infrastructure,
-          institutional setups, printing solutions, and real estate development
-          with precision, scalability, and trust.
+        <p className="mt-3  text-sm sm:text-base md:text-lg text-white/90">
+          ARVI Solutions is a professionally managed, customer‑focused organization specializing in CCTV surveillance, network infrastructure, and technical support services. Since its inception in 2018, the company has developed a strong track record of delivering reliable, value‑driven solutions to government departments, corporates, and institutions across Andhra Pradesh, Telangana, and Karnataka.
         </p>
 
         {/* BUTTONS */}
         <div className="mt-7 flex flex-col sm:flex-row gap-4 justify-center">
-          <button className="px-7 py-3 rounded-lg bg-[#03303A] hover:bg-[#02242B] transition font-semibold w-full sm:w-auto">
+         <Link to="/services">
+          <button className="px-7 py-3 cursor-pointer rounded-lg bg-[#03303A] hover:bg-[#02242B] transition font-semibold w-full sm:w-auto">
             Explore Services
-          </button>
-          <button className="px-7 py-3 rounded-lg border border-white/40 hover:bg-white hover:text-[#320609] transition font-semibold w-full sm:w-auto">
-            Contact ARVI
-          </button>
+          </button></Link>
+          <Link to="/contact">
+            <button className="px-7 py-3 cursor-pointer rounded-lg border border-white/40 hover:bg-white hover:text-[#320609] transition font-semibold w-full sm:w-auto">
+              Contact ARVI
+            </button>
+          </Link>
         </div>
 
         {/* ================= COUNTERS ================= */}

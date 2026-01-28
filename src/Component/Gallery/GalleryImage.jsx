@@ -3,20 +3,27 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FaTimes, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 // Import images
-import gi1 from "../../assets/image/s1.jpg";
-import gi2 from "../../assets/image/s1.jpg";
-import gi3 from "../../assets/image/s1.jpg";
-import gi4 from "../../assets/image/s1.jpg";
-import gi5 from "../../assets/image/s1.jpg";
-import gi6 from "../../assets/image/s1.jpg";
-import gi7 from "../../assets/image/s1.jpg";
-import gi8 from "../../assets/image/s1.jpg";
-import gi9 from "../../assets/image/s1.jpg";
-import gi10 from "../../assets/image/s1.jpg";
-import gi11 from "../../assets/image/s1.jpg";
+import gi1 from "../../assets/image/gallery/g1.jpeg";
+import gi2 from "../../assets/image/gallery/g2.jpeg";
+import gi3 from "../../assets/image/gallery/g3.jpeg";
+import gi4 from "../../assets/image/gallery/g4.jpeg"; 
+import gi5 from "../../assets/image/gallery/g5.jpeg";
+import gi6 from "../../assets/image/gallery/g6.jpeg";
+import gi7 from "../../assets/image/gallery/g7.jpeg";
+import gi8 from "../../assets/image/gallery/g8.jpeg";
+import gi9 from "../../assets/image/gallery/g9.jpeg";
+import gi10 from "../../assets/image/gallery/g10.jpeg";
+import gi11 from "../../assets/image/h1.jpg";
+import gi12 from "../../assets/image/h2.jpg";
+import gi13 from "../../assets/image/h3.jpg";
+import gi14 from "../../assets/image/sc1.jpg";
+import gi16 from "../../assets/image/sc3.jpg";
+import gi17 from "../../assets/image/sc4.jpg";
+import gi18 from "../../assets/image/sc5.jpg";
+
 
 const images = [
-  gi1, gi2, gi3, gi4, gi5, gi6, gi7, gi8, gi9, gi10, gi11,
+  gi1, gi2, gi3, gi4, gi5, gi6, gi7, gi8, gi9, gi10, gi11, gi12, gi13, gi14, gi16, gi17, gi18,
 ];
 
 function GalleryImage() {

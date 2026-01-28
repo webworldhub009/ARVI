@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import bg from "../../assets/image/abg.jpg"; // apni image ka path yahan do
+import { Link } from "react-router-dom";
 
 export default function AboutHeroARVI() {
   return (
@@ -51,7 +52,7 @@ export default function AboutHeroARVI() {
                 hover:bg-white
                 transition duration-300
               ">
-                Explore Services
+               <Link to="/services" className="">Explore Services</Link>
               </button>
 
               <button className="
@@ -60,7 +61,8 @@ export default function AboutHeroARVI() {
                 hover:bg-[#C9A24D] hover:text-[#230304]
                 transition duration-300
               ">
-                Contact Us
+                <Link to="/contact" className="">Contact Us</Link>
+
               </button>
             </div>
           </motion.div>

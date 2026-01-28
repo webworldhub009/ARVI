@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { FaLaptopCode, FaBuilding, FaPrint, FaCity } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default function ArivAbout() {
   return (
@@ -26,18 +27,17 @@ export default function ArivAbout() {
           </h2>
 
           <p className="mt-5 text-white/85 leading-relaxed max-w-xl">
-            ARVI is an enterprise-focused solutions provider delivering
-            technology integration, digital infrastructure, printing solutions,
-            institutional setups, and real estate development with long-term
-            reliability and innovation.
+           Headquartered in Uppal, Hyderabad, ARVI Solutions offers comprehensive, end‑to‑end services spanning design, installation, configuration, documentation, and lifecycle support. The team comprises qualified and trained technical professionals with hands‑on expertise in CCTV systems, networking technologies, and field operations.[23]
+The organization places equal emphasis on technology and process, ensuring that every deployment is backed by proper documentation, clear communication, and measurable service levels aligned with client requirements and budgets.[23]
+
           </p>
 
           <div className="mt-7 flex gap-4">
             <button className="px-6 py-3 rounded-lg bg-[#0D4A6B] hover:bg-[#09364F] transition font-medium  hover:text-[#320609] hover:bg-white cursor-pointer">
-              Learn More
+              <Link to="/about" className="">Learn More</Link>
             </button>
             <button className="px-6 py-3 rounded-lg border border-white/30 hover:bg-white hover:text-[#230304] transition cursor-pointer">
-              Contact Us
+              <Link to="/contact" className="">Contact Us</Link>
             </button>
           </div>
         </motion.div>

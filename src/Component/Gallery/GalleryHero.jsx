@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import bgImage from "../../assets/image/s1.jpg";
+import { Link } from "react-router-dom";
 
 function GalleryHero() {
   return (
@@ -67,12 +68,12 @@ function GalleryHero() {
               View Our Gallery
             </a>
 
-            <a
-              href="#services"
+            <Link
+              to="/services"
               className="px-8 py-3 rounded-xl border border-[#C9A24D] text-[#C9A24D] font-semibold hover:bg-[#C9A24D] hover:text-[#230304] transition-all duration-300 transform hover:scale-105 shadow-lg"
             >
               Explore Services
-            </a>
+            </Link>
           </motion.div>
         </motion.div>
       </div>

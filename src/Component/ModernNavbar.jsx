@@ -35,22 +35,22 @@ const navItems = [
   { name: "Home", path: "/", icon: <FaHome /> },
   { name: "About ARVI", path: "/about", icon: <FaInfoCircle /> },
   { name: "Services", path: "/services", icon: <FaLayerGroup /> },
-  { name: "Projects", path: "/projects", icon: <FaBuilding /> },
+  { name: "Certificate", path: "/certificate", icon: <FaBuilding /> },
   { name: "Gallery", path: "/gallery", icon: <FaImages /> },
   { name: "Contact", path: "/contact", icon: <FaPhoneAlt /> },
 ];
 
 const socialIcons = [
-  { icon: FaFacebookF, link: "#" },
-  { icon: FaInstagram, link: "#" },
-  { icon: FaLinkedinIn, link: "#" },
+  { icon: FaFacebookF, link: "#https://www.facebook.com/" },
+  { icon: FaInstagram, link: "#https://www.instagram.com/" },
+  { icon: FaLinkedinIn, link: "https://www.linkedin.com/company/myarvi/?originalSubdomain=in" },
   { icon: FaTwitter, link: "#" },
-  { icon: FaYoutube, link: "#" },
+  { icon: FaYoutube, link: "#https://www.yoututbe.com/" },
 ];
 
 const COMPANY_INFO = {
-  email: "info@arivsolutions.com",
-  mobile: "+91 98978 14896",
+  email: "Arunn@arvisolutions.in",
+  mobile: "+91‑90591 17459",
 };
 
 const ModernNavbar = () => {

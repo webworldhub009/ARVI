@@ -1,284 +1,186 @@
 // src/pages/ServiceDetail.jsx
 import React, { useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import { FaArrowRight, FaTimes } from "react-icons/fa";
 
-// ------------------ Image Imports ------------------
-import sl11 from "../../assets/image/sc5.jpg";
-import sl21 from "../../assets/image/sc1.jpg";
-import sl31 from "../../assets/image/sc1.jpg";
-import sl41 from "../../assets/image/sc1.jpg";
-import sl51 from "../../assets/image/sc1.jpg";
-import sl61 from "../../assets/image/sc1.jpg";
-import sl71 from "../../assets/image/sc1.jpg";
-import sl81 from "../../assets/image/sc1.jpg";
-import sl91 from "../../assets/image/sc1.jpg";
+// Images
+import img1 from "../../assets/image/sc5.jpg";
+import img2 from "../../assets/image/sc1.jpg";
+import img3 from "../../assets/image/sc1.jpg";
+import img4 from "../../assets/image/sc1.jpg";
+import img5 from "../../assets/image/sc1.jpg";
+import img6 from "../../assets/image/sc1.jpg";
 
-// ------------------ ARVI Service Data ------------------
-const serviceDetails = {
-  1: {
-    title: "CCTV & Surveillance Solutions",
-    dec: "Advanced security surveillance systems with professional deployment.",
-    image: sl11,
-    tableData: [
-      "HD & IP Cameras",
-      "24/7 Monitoring",
-      "Remote Access",
-      "Secure Storage",
-      "Night Vision",
-      "Scalable Architecture",
-      "Low Maintenance",
-    ],
-    faqs: [
-      { q: "Is remote monitoring available?", a: "Yes, secure remote access is supported." },
-      { q: "Can it scale for large sites?", a: "Absolutely, systems are scalable." },
-    ],
+// ------------------ ARVI SERVICES ------------------
+const services = [
+  {
+    id: 1,
+    title: "CCTV & Surveillance",
+    desc: "Smart security solutions with 24/7 monitoring and remote access.",
+    longDesc:
+      "Our CCTV & Surveillance solutions ensure round-the-clock protection with HD/IP cameras, remote monitoring, secure storage, and scalable architecture suitable for enterprises, campuses, and commercial spaces.",
+    img: img1,
   },
-
-  2: {
-    title: "Network Infrastructure Services",
-    dec: "Structured, secure, and high-performance networking solutions.",
-    image: sl21,
-    tableData: [
-      "LAN / WAN Setup",
-      "Structured Cabling",
-      "Firewall Security",
-      "Enterprise Grade Hardware",
-      "High Availability",
-      "Low Latency",
-      "Future Ready",
-    ],
-    faqs: [
-      { q: "Is it suitable for enterprises?", a: "Yes, designed for enterprise use." },
-      { q: "Does it support security?", a: "Advanced firewall & monitoring included." },
-    ],
+  {
+    id: 2,
+    title: "Network Infrastructure",
+    desc: "Secure, scalable and high-performance networking systems.",
+    longDesc:
+      "We design and deploy enterprise-grade LAN/WAN networks with structured cabling, firewall security, redundancy, and future-ready scalability.",
+    img: img2,
   },
-
-  3: {
-    title: "System Installation & Commissioning",
-    dec: "End-to-end installation with compliance and performance assurance.",
-    image: sl31,
-    tableData: [
-      "Certified Engineers",
-      "Compliance Checked",
-      "On-Site Testing",
-      "Documentation",
-      "Smooth Commissioning",
-      "Quality Assurance",
-      "Reliable Handover",
-    ],
-    faqs: [
-      { q: "Is documentation provided?", a: "Yes, full project documentation." },
-      { q: "Do you perform testing?", a: "Complete on-site testing included." },
-    ],
+  {
+    id: 3,
+    title: "System Installation",
+    desc: "Certified installation & commissioning with full compliance.",
+    longDesc:
+      "End-to-end system installation handled by certified engineers including testing, documentation, and smooth commissioning.",
+    img: img3,
   },
-
-  4: {
-    title: "Site Survey & Technical Consultancy",
-    dec: "Professional assessment aligned to operational and budgetary needs.",
-    image: sl41,
-    tableData: [
-      "Site Evaluation",
-      "Risk Assessment",
-      "Cost Optimization",
-      "Technical Planning",
-      "Compliance Review",
-      "Solution Blueprint",
-      "Expert Guidance",
-    ],
-    faqs: [
-      { q: "Is the survey customized?", a: "Yes, site-specific analysis is done." },
-      { q: "Do you provide reports?", a: "Detailed technical reports included." },
-    ],
+  {
+    id: 4,
+    title: "Technical Consultancy",
+    desc: "Professional site survey & technology planning services.",
+    longDesc:
+      "Our experts provide detailed site surveys, risk assessments, and optimized technology roadmaps aligned with your business needs.",
+    img: img4,
   },
-
-  5: {
-    title: "Annual Maintenance Contracts (AMC)",
-    dec: "Preventive maintenance ensuring reliability and uptime.",
-    image: sl51,
-    tableData: [
-      "Scheduled Maintenance",
-      "Priority Support",
-      "Reduced Downtime",
-      "Compliance Records",
-      "Cost Control",
-      "Dedicated Engineers",
-      "Service Reports",
-    ],
-    faqs: [
-      { q: "Is support priority-based?", a: "Yes, AMC clients get priority support." },
-      { q: "Are reports provided?", a: "Detailed service reports included." },
-    ],
+  {
+    id: 5,
+    title: "AMC Services",
+    desc: "Preventive maintenance ensuring uptime & reliability.",
+    longDesc:
+      "Annual Maintenance Contracts ensure proactive monitoring, reduced downtime, priority support, and detailed service reporting.",
+    img: img5,
   },
-
-  6: {
-    title: "Field Service Operations",
-    dec: "On-site technical support across multiple project locations.",
-    image: sl61,
-    tableData: [
-      "Rapid Response",
-      "Multi-Location Support",
-      "Skilled Technicians",
-      "Issue Resolution",
-      "Minimal Downtime",
-      "Process Driven",
-      "Reliable Execution",
-    ],
-    faqs: [
-      { q: "Is multi-location support available?", a: "Yes, pan-location execution supported." },
-      { q: "Are technicians certified?", a: "Yes, trained and experienced staff." },
-    ],
+  {
+    id: 6,
+    title: "Project Execution",
+    desc: "Multi-location execution with centralized coordination.",
+    longDesc:
+      "We manage large-scale and multi-location projects with standardized execution, centralized reporting, and reliable delivery.",
+    img: img6,
   },
-
-  7: {
-    title: "Equipment Supply & Integration",
-    dec: "Certified hardware supply with seamless integration.",
-    image: sl71,
-    tableData: [
-      "Certified Equipment",
-      "Vendor Neutral",
-      "Seamless Integration",
-      "Warranty Support",
-      "Quality Tested",
-      "Compatibility Checked",
-      "Secure Deployment",
-    ],
-    faqs: [
-      { q: "Is equipment certified?", a: "Yes, only certified hardware used." },
-      { q: "Do you support integration?", a: "Complete integration services provided." },
-    ],
-  },
-
-  8: {
-    title: "Institutional & Commercial Projects",
-    dec: "Turnkey execution for institutions and commercial facilities.",
-    image: sl81,
-    tableData: [
-      "Hostels & Campuses",
-      "Commercial Buildings",
-      "Large Scale Projects",
-      "Compliance Driven",
-      "Structured Execution",
-      "Timely Delivery",
-      "Quality Assurance",
-    ],
-    faqs: [
-      { q: "Do you handle large projects?", a: "Yes, institutional-scale projects supported." },
-      { q: "Is execution standardized?", a: "Yes, process-driven execution." },
-    ],
-  },
-
-  9: {
-    title: "Multi-Location Project Execution",
-    dec: "Scalable deployment across regions with centralized control.",
-    image: sl91,
-    tableData: [
-      "Regional Coverage",
-      "Centralized Monitoring",
-      "Standardized Processes",
-      "Timely Execution",
-      "Dedicated Coordination",
-      "Reporting & Billing",
-      "Reliable Support",
-    ],
-    faqs: [
-      { q: "Is regional execution supported?", a: "Yes, across multiple locations." },
-      { q: "Is reporting centralized?", a: "Yes, structured reporting available." },
-    ],
-  },
-};
+];
 
 export default function ServiceDetail() {
-  const { id } = useParams();
   const navigate = useNavigate();
-  const [openFAQ, setOpenFAQ] = useState(null);
-
-  const service = serviceDetails[id];
-
-  if (!service) {
-    return (
-      <div className="py-20 text-center">
-        <h2 className="text-3xl font-bold text-[#0F2A44]">Service Not Found</h2>
-        <button
-          onClick={() => navigate(-1)}
-          className="mt-6 px-6 py-3 bg-[#2EC4B6] text-[#0F2A44] rounded-full font-semibold hover:bg-[#0F2A44] hover:text-white transition"
-        >
-          Go Back
-        </button>
-      </div>
-    );
-  }
+  const [activeService, setActiveService] = useState(null);
 
   return (
-    <div className="bg-[#F5F9FC]">
+    <div className="bg-[#F6FBFF] text-[#34191B]">
 
-      {/* HERO */}
-      <section className="relative h-[80vh] flex items-center justify-center text-center">
-        <img
-          src={service.image}
-          alt={service.title}
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-[#0F2A44]/80"></div>
+      {/* ================= HERO ================= */}
+      <section className="relative h-[85vh] flex items-center justify-center text-center">
+        <img src={img1} className="absolute inset-0 w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-[#34191B]/80"></div>
 
         <motion.div
-          className="relative z-10 max-w-4xl px-6 text-white"
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          className="relative z-10 max-w-4xl px-6"
         >
-          <h1 className="text-4xl md:text-6xl font-extrabold text-[#8EDCE6]">
-            {service.title}
+          <h1 className="text-4xl md:text-6xl font-extrabold text-[#40BBDF]">
+            ARVI Technology Services
           </h1>
-          <p className="mt-6 text-lg md:text-xl text-white/90">
-            {service.dec}
+          <p className="mt-6 text-lg text-white/90">
+            Reliable, secure and future-ready technology solutions.
           </p>
-
-          <button
-            onClick={() => navigate("/contact")}
-            className="mt-8 px-8 py-3 rounded-full bg-[#2EC4B6] text-[#0F2A44] font-semibold hover:bg-white transition"
-          >
-            Contact Us
-          </button>
         </motion.div>
       </section>
 
-      {/* CONTENT */}
-      <section className="max-w-7xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-10">
-        <img
-          src={service.image}
-          alt={service.title}
-          className="rounded-2xl shadow-xl object-cover h-full"
-        />
+      {/* ================= SERVICES GRID ================= */}
+      <section className="max-w-7xl mx-auto px-6 py-24">
+        <h2 className="text-3xl font-bold text-center mb-14">
+          Our Core Services
+        </h2>
 
-        <div>
-          <h2 className="text-3xl font-bold text-[#0F2A44] mb-6">
-            Service Highlights
-          </h2>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
+          {services.map((service, i) => (
+            <motion.div
+              key={service.id}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.1 }}
+              className="group bg-white rounded-2xl shadow-xl overflow-hidden hover:-translate-y-2 transition"
+            >
+              <img
+                src={service.img}
+                className="h-52 w-full object-cover group-hover:scale-110 transition duration-500"
+              />
 
-          <table className="w-full border border-[#2EC4B6]/40">
-            <tbody>
-              {service.tableData.map((item, i) => (
-                <tr key={i} className="border-b">
-                  <td className="px-4 py-3 bg-[#2EC4B6] text-[#0F2A44] font-semibold">
-                    Feature {i + 1}
-                  </td>
-                  <td className="px-4 py-3 text-[#1E293B] bg-white">
-                    {item}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+              <div className="p-6">
+                <h3 className="text-xl font-bold group-hover:text-[#40BBDF]">
+                  {service.title}
+                </h3>
+                <p className="mt-3 text-gray-600 text-sm">
+                  {service.desc}
+                </p>
 
-          <button
-            onClick={() => navigate(-1)}
-            className="mt-8 px-6 py-3 bg-[#0F2A44] text-white rounded-full hover:bg-[#2EC4B6] hover:text-[#0F2A44] transition"
-          >
-            Back to Services
-          </button>
+                <button
+                  onClick={() => setActiveService(service)}
+                  className="mt-6 inline-flex items-center gap-2 text-[#40BBDF] font-semibold hover:gap-4 transition"
+                >
+                  Learn More
+                  <FaArrowRight className="animate-pulse" />
+                </button>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </section>
+
+      {/* ================= POPUP MODAL ================= */}
+      <AnimatePresence>
+        {activeService && (
+          <motion.div
+            className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center px-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="bg-white max-w-2xl w-full rounded-2xl overflow-hidden shadow-2xl relative"
+            >
+              {/* Close Button */}
+              <button
+                onClick={() => setActiveService(null)}
+                className="absolute top-4 right-4 text-white bg-[#34191B]/70 p-2 rounded-full hover:bg-red-500 transition"
+              >
+                <FaTimes />
+              </button>
+
+              {/* Image */}
+              <img
+                src={activeService.img}
+                className="h-64 w-full object-cover"
+              />
+
+              {/* Content */}
+              <div className="p-8">
+                <h3 className="text-2xl font-bold text-[#34191B]">
+                  {activeService.title}
+                </h3>
+                <p className="mt-4 text-gray-600 leading-relaxed">
+                  {activeService.longDesc}
+                </p>
+
+                <button
+                  onClick={() => navigate("/contact")}
+                  className="mt-8 px-8 py-3 bg-[#40BBDF] text-[#34191B] rounded-full font-semibold hover:bg-[#34191B] hover:text-white transition"
+                >
+                  Contact ARVI Team
+                </button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

@@ -33,9 +33,10 @@ function ContactInfo() {
               <div>
                 <h3 className="font-semibold text-lg">Office Address</h3>
                 <p className="text-white/80 text-sm leading-relaxed">
-                  ARVI Solutions Pvt. Ltd.<br />
-                  Karmelram Post, Kodathi Gate,<br />
-                  Sarjapura Main Road, Bengaluru – 560035
+                  Plot No. 6 Ground Floor Kalyanpuri Colony Road Opposite Sai Ambika Vihar Visatath Enclave, Azmath Nagar, Uppal, Hyderabad, Telangana 500039
+                </p>
+                <p className="text-white/80 text-sm leading-relaxed">
+                  Plot No. 8-43/9/10 Ground Floor West Bajali Nearby Street No. 6 Sri Laxmi Narsimha Tent House Balaji Hill Colony Uppal Hyderabad Telangana 500039
                 </p>
               </div>
             </div>
@@ -64,10 +65,16 @@ function ContactInfo() {
               <div>
                 <h3 className="font-semibold text-lg">Email</h3>
                 <a
-                  href="mailto:info@arvisolutions.in"
+                  href="mailto:Arunn@arvisolutions.in"
                   className="text-white/80 hover:text-[#C9A24D] transition text-sm"
                 >
-                  info@arvisolutions.in
+                  Arunn@arvisolutions.in
+                </a><br />
+                <a
+                  href="mailto:Helpdesk@arvisolutions.in"
+                  className="text-white/80 hover:text-[#C9A24D] transition text-sm"
+                >
+                  Helpdesk@arvisolutions.in
                 </a>
               </div>
             </div>
@@ -120,7 +127,7 @@ function ContactInfo() {
 
               <button
                 type="submit"
-                className="inline-flex items-center gap-2 px-7 py-3 rounded-xl bg-[#0B1C26] text-white font-semibold hover:bg-[#C9A24D] hover:text-[#230304] transition-all duration-300 shadow-lg"
+                className="inline-flex items-center gap-2 px-7 py-3 rounded-xl bg-[#0B1C26] text-white font-semibold hover:bg-[#C9A24D] hover:text-[#230304] transition-all duration-300 shadow-lg cursor-pointer"
               >
                 <FaPaperPlane />
                 Send Message
