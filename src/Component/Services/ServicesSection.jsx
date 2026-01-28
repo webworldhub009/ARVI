@@ -4,8 +4,17 @@ import { Link } from "react-router-dom";
 
 /* 🔹 Replace images with your own */
 import img1 from "../../assets/image/h2.jpg";
-import img2 from "../../assets/image/sc3.jpg";
-import img3 from "../../assets/image/sc4.jpg";
+import img2 from "../../assets/image/sc1.jpg";
+import img3 from "../../assets/image/services/sd51.jpg";
+import img4 from "../../assets/image/services/sd43.jpg";
+import img5 from "../..//assets/image/services/sd44.jpg";
+import img6 from "../../assets/image/sc6.jpg";
+import img7 from "../../assets/image/w2.jpg";
+import img8 from "../../assets/image/w3.jpg";
+import img9 from "../../assets/image/sc3.jpg";
+import img10 from "../../assets/image/services/sd8.jpg";
+import img11 from "../../assets/image/services/sd14.jpg";
+import img12 from "../../assets/image/services/sd26.jpg";
 
 const services = [
   {
@@ -18,43 +27,43 @@ const services = [
     id: 2,
     title: "Network Infrastructure",
     desc: "Secure, scalable and high-performance networking solutions.",
-    img: img2,
+    img: img10,
   },
   {
     id: 3,
     title: "Structured Cabling",
     desc: "Reliable cabling systems ensuring seamless connectivity.",
-    img: img3,
+    img: img11,
   },
   {
     id: 4,
     title: "Printing Solutions",
     desc: "All types of commercial & institutional printing systems.",
-    img: img1,
+    img: img7,
   },
   {
     id: 5,
     title: "Video Conferencing",
     desc: "Professional audio-visual meeting & conferencing solutions.",
-    img: img2,
+    img: img12,
   },
   {
     id: 6,
     title: "Computer Accessories",
     desc: "Complete range of hardware and IT accessories.",
-    img: img3,
+    img: img2,
   },
   {
     id: 7,
     title: "Computing Infrastructure",
     desc: "Modern IT and digital infrastructure for organizations.",
-    img: img1,
+    img: img5,
   },
   {
     id: 8,
     title: "AMC Services",
     desc: "Annual maintenance contracts for uninterrupted operations.",
-    img: img2,
+    img: img4,
   },
   {
     id: 9,
@@ -66,19 +75,19 @@ const services = [
     id: 10,
     title: "Website Design & Development",
     desc: "Mobile‑friendly and cross‑platform websites .",
-    img: img1,
+    img: img9,
   },
   {
     id: 11,
     title: "Real Estate Projects",
     desc: "Commercial & residential infrastructure projects.",
-    img: img2,
+    img: img8,
   },
   {
     id: 12,
     title: "School & Institutional Furniture",
     desc: "Commercial & residential infrastructure projects.",
-    img: img2,
+    img: img6,
   },
 ];
 
@@ -130,11 +139,11 @@ const ServicesSection = () => {
                 {/* Button */}
                 <Link
                   to={`/services/${service.id}`}
-                  className="inline-flex items-center gap-2 px-6 py-2 rounded-full font-semibold text-sm
+                  className="inline-flex items-center cursor-pointer gap-2 px-6 py-2 rounded-full font-semibold text-sm
                   bg-[#41B9E8] text-[#041E2F]
                   hover:bg-white hover:text-[#41B9E8]
                   transition-all duration-300
-                  group-hover:shadow-[0_0_20px_rgba(65,185,232,0.6)]"
+                  group-hover:shadow-[0_0_20px_rgba(65,185,232,0.6)] "
                 >
                   Learn More
                   <span className="group-hover:translate-x-1 transition-transform">

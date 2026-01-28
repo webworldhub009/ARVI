@@ -38,12 +38,12 @@ const COLORS = {
    ARIV SERVICES
 ===================== */
 const servicesData = [
-  { name: "Enterprise Technology & Integration", path: "/services/enterprise", icon: FaLayerGroup },
-  { name: "Digital Setup Solutions", path: "/services/digital", icon: FaBuilding },
-  { name: "Website Design Solutions", path: "/services/web", icon: FaImages },
-  { name: "Printing Solutions", path: "/services/printing", icon: FaStore },
-  { name: "School Furniture Solutions", path: "/services/furniture", icon: FaBuilding },
-  { name: "Real Estate Projects", path: "/services/10", icon: FaProjectDiagram },
+  { name: "CCTV & Surveillance", path: "/services/1", icon: FaLayerGroup },
+  { name: "Network Infrastructure", path: "/services/2", icon: FaBuilding },
+  { name: "Structured Cabling", path: "/services/3", icon: FaImages },
+  { name: "Printing Solutions", path: "/services/4", icon: FaStore },
+  { name: "School Furniture Solutions", path: "/services/12", icon: FaBuilding },
+  { name: "Real Estate Projects", path: "/services/11", icon: FaProjectDiagram },
 ];
 
 export default function Footer() {

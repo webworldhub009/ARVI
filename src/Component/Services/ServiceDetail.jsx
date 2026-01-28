@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, Links, useParams } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
 import img1 from "../../assets/image/services/sd1.jpg";
@@ -299,7 +299,7 @@ const ServiceDetail = () => {
                   onClick={() => setActiveCard(card)}
                   className="relative inline-flex items-center gap-2 px-6 py-2 rounded-full
                   bg-[#41B9E8] text-[#041E2F] font-semibold overflow-hidden
-                  hover:text-[#41B9E8] transition-all duration-300"
+                  hover:text-[#41B9E8] transition-all duration-300 cursor-pointer"
                 >
                   <span className="absolute inset-0 bg-white scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"></span>
                   <span className="relative">Learn More →</span>
@@ -318,8 +318,9 @@ const ServiceDetail = () => {
         <p className="text-white/70 mb-8">
           Talk to ARVI experts for tailored surveillance systems.
         </p>
-        <button className="px-8 py-3 bg-[#41B9E8] text-[#041E2F] rounded-full font-semibold hover:bg-white hover:text-[#41B9E8] transition">
-          Contact ARVI Team
+        <button className="px-8 py-3 bg-[#41B9E8] text-[#041E2F] rounded-full font-semibold hover:bg-white hover:text-[#41B9E8] transition cursor-pointer">
+          <Link to="/contact">Contact ARVI Team</Link>
+
         </button>
       </div>
 
@@ -340,7 +341,7 @@ const ServiceDetail = () => {
             >
               <button
                 onClick={() => setActiveCard(null)}
-                className="absolute top-4 right-4 text-white text-xl"
+                className="absolute top-4 right-4 text-white text-xl cursor-pointer"
               >
                 ✕
               </button>
@@ -354,8 +355,8 @@ const ServiceDetail = () => {
                 {activeCard.long}
               </p>
 
-              <button className="px-6 py-2 bg-[#41B9E8] text-[#041E2F] rounded-full font-semibold hover:bg-white hover:text-[#41B9E8] transition">
-                Contact Us
+              <button className="px-6 py-2 bg-[#41B9E8] text-[#041E2F] rounded-full font-semibold hover:bg-white hover:text-[#41B9E8] transition cursor-pointer">
+                <Link to="/contact">Contact Us</Link>
               </button>
             </motion.div>
           </motion.div>
